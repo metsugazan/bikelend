@@ -7,6 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+import HomeScreen from '../screens/HomeScreen';
 
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -21,7 +22,9 @@ const StackNavigation = () => {
         <NavigationContainer>
         <Stack.Navigator initialRouteName="login">
             <Stack.Screen name="login" options={{ headerTitleAlign: 'center', headerShown: false }} component={LoginScreen} />
-            <Stack.Screen name="register" options={{ title: 'Création compte', headerTitleAlign: 'center', headerStyle: { backgroundColor: '#2738C2' }, headerTitleStyle: { color: 'white' }, headerTintColor: 'white' }} component={RegisterScreen} />
+            <Stack.Screen name="register" options={{ title: 'Création compte', headerTitleAlign: 'center', headerStyle: { backgroundColor: '#5b8e7d' }, headerTitleStyle: { color: 'white' }, headerTintColor: 'white' }} component={RegisterScreen} />
+            <Stack.Screen name="home" options={{ title: 'Accueil', headerTitleAlign: 'center', headerStyle: { backgroundColor: '#5b8e7d' }, headerTitleStyle: { color: 'white' }, headerTintColor: 'white' }} component={HomeScreen} />
+
         </Stack.Navigator>
         </NavigationContainer>
     )
