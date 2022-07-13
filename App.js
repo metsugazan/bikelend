@@ -27,8 +27,8 @@ export default function App() {
   const [user, setUser] = useState();
 
   function onAuthStateChanged(user) {
-   /* setUser(user);
-    if (user != null){
+    setUser(user);
+    /*if (user != null){
     SetSolde_(user.uid)
     }*/
     if (initializing) setInitializing(false);
@@ -44,16 +44,18 @@ export default function App() {
     return subscriber; 
   }, []);
 
-  //if (initializing) return null;
+  if (initializing) return null;
 
- /* if (!user) {
+  if (!user) {
       console.log('Deconnecter')
-  }*/
+  }
   
   return (
     <PaperProvider theme={theme}>
        <StatusBar backgroundColor="#5b8e7d" barStyle="light-content" />
+       <UserContext.Provider value={{user}}>
       <AppNavigation />
+      </UserContext.Provider>
         </PaperProvider>
   );
 };
