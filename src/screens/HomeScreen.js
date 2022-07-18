@@ -50,7 +50,7 @@ const HomeScreen = ({navigation}) => {
               alignItems: 'center',
               marginLeft: 10,
               justifyContent: 'center',
-            }}><Text>Bonjour {UserContext_.user.displayName} !</Text>
+            }}><Text>Bonjour  !</Text>
             </View>
           <TouchableOpacity
             onPress={() => {
