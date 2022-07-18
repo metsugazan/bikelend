@@ -6,6 +6,8 @@ import {
   StyleSheet,
   Image,
   TextInput,
+  KeyboardAvoidingView,
+  ScrollView,
 } from 'react-native';
 import {TextInput as TextInputEye} from 'react-native-paper';
 import auth from '@react-native-firebase/auth';
@@ -108,8 +110,8 @@ const LoginScreen = ({navigation}) => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={{flex: 0.6, alignItems: 'center', justifyContent: 'center'}}>
+    <KeyboardAvoidingView style={styles.container}>
+      <View style={{flex: 2, alignItems: 'center', justifyContent: 'center'}}>
         <Image
           style={{
             height: '100%',
@@ -120,7 +122,9 @@ const LoginScreen = ({navigation}) => {
           source={require('../images/logo.png')}
         />
       </View>
+      <ScrollView>
       <View style={{flex: 1, alignItems: 'center'}}>
+
         <Text style={styles.txtTitle}>Email</Text>
         <TextInputEye
           style={{
@@ -199,14 +203,7 @@ const LoginScreen = ({navigation}) => {
         {passwordValidError ? (
           <Text style={{color: color, marginTop: 5}}>{passwordValidError}</Text>
         ) : null}
-
-        <TouchableOpacity
-          onPress={() => {
-            handleSubmit();
-          }}>
-          <Text style={styles.btnValidation}>Connexion</Text>
-        </TouchableOpacity>
-        <View style={{flexDirection: 'row'}}>
+        <View style={{flexDirection: 'row', marginTop:'5%'}}>
           <View style={{flex: 1.1}}>
             <Text
               style={{fontSize: 18, textAlign: 'right', fontWeight: 'bold'}}>
@@ -227,8 +224,31 @@ const LoginScreen = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
+
+        <TouchableOpacity
+          onPress={() => {
+            handleSubmit();
+          }}>
+          <Text style={styles.btnValidation}>Connexion</Text>
+        </TouchableOpacity>
+        <View style={{flexDirection: 'row'}}>
+          <View style={{flex: 1}}>
+          <TouchableOpacity onPress={() => navigation.navigate('reset')}>
+              <Text
+                style={{
+                  fontSize: 18,
+                  color: '#f4a259',
+                  fontWeight: 'bold',
+                  textAlign: 'center',
+                }}>
+                Mot de passe oublié ?
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
-    </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 

@@ -8,6 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import HomeScreen from '../screens/HomeScreen';
+import ResetMDPScreen from '../screens/ResetMDPScreen';
 
 import HistoScreen from '../screens/HistoScreen';
 import LendBikeScreen from '../screens/LendBikeScreen';
@@ -15,6 +16,7 @@ import ListBikeScreen from '../screens/ListBikeScreen';
 
 import CustomDrawer from '../components/CustomDrawer';
 import RNBootSplash from "react-native-bootsplash";
+
 
 
 const Stack = createNativeStackNavigator();
@@ -25,7 +27,7 @@ const StackNavigation = () => {
         <Stack.Navigator initialRouteName="login">
             <Stack.Screen name="login" options={{ headerTitleAlign: 'center', headerShown: false }} component={LoginScreen} />
             <Stack.Screen name="register" options={{ title: 'Création compte', headerTitleAlign: 'center', headerStyle: { backgroundColor: '#5b8e7d' }, headerTitleStyle: { color: 'white' }, headerTintColor: 'white' }} component={RegisterScreen} />
-
+            <Stack.Screen name="reset" options={{ title: 'Réinitialisation', headerTitleAlign: 'center', headerStyle: { backgroundColor: '#5b8e7d' }, headerTitleStyle: { color: 'white' }, headerTintColor: 'white' }} component={ResetMDPScreen} />
         </Stack.Navigator>
 
     )

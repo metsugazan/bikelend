@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  KeyboardAvoidingView
 } from 'react-native'
 
 import {TextInput} from 'react-native-paper';
@@ -155,9 +156,8 @@ const RegisterScreen = ({navigation}, id) => {
   };
 
   return (
-    <ScrollView style={{flex: 1}}>
-      <View style={styles.container}>
-        <Text style={styles.txtTitle}>Penser à ajouter la photo</Text>
+    <KeyboardAvoidingView style={styles.container}>
+      <ScrollView>
         <Text style={styles.txtTitle}>Email</Text>
         <TextInput
           style={{
@@ -168,7 +168,7 @@ const RegisterScreen = ({navigation}, id) => {
             borderWidth: 3,
             paddingHorizontal: 15,
             marginTop: 5,
-            backgroundColor: '#F4A259',
+            backgroundColor: '#8cb369',
             borderRadius: 10,
             color: '#838383',
             shadowColor: 'black',
@@ -208,7 +208,7 @@ const RegisterScreen = ({navigation}, id) => {
             borderWidth: 3,
             paddingHorizontal: 15,
             marginTop: 5,
-            backgroundColor: '#F4A259',
+            backgroundColor: '#8cb369',
             borderRadius: 10,
             color: '#838383',
             shadowColor: 'black',
@@ -247,7 +247,7 @@ const RegisterScreen = ({navigation}, id) => {
             borderWidth: 3,
             paddingHorizontal: 15,
             marginTop: 5,
-            backgroundColor: '#F4A259',
+            backgroundColor: '#8cb369',
             borderRadius: 10,
             color: '#838383',
             shadowColor: 'black',
@@ -296,7 +296,7 @@ const RegisterScreen = ({navigation}, id) => {
             borderWidth: 3,
             paddingHorizontal: 15,
             marginTop: 5,
-            backgroundColor: '#F4A259',
+            backgroundColor: '#8cb369',
             borderRadius: 10,
             color: '#838383',
             shadowColor: 'black',
@@ -344,14 +344,14 @@ const RegisterScreen = ({navigation}, id) => {
           <Text style={{color: 'green', marginTop: 5}}></Text>
         )}
 
-        <TouchableOpacity
+        <TouchableOpacity style={{alignItems: 'center'}}
           onPress={() => {
             handleSubmit();
           }}>
           <Text style={styles.btnValidation}>Création</Text>
         </TouchableOpacity>
-      </View>
-    </ScrollView>
+        </ScrollView>
+      </KeyboardAvoidingView>
   );
 };
 
@@ -359,12 +359,13 @@ export default RegisterScreen;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f4e285',
+    backgroundColor: '#5b8e7d',
     alignItems: 'center',
     justifyContent: 'center',
+    flex: 1
   },
   btnValidation: {
-    backgroundColor: '#F4A259',
+    backgroundColor: '#8cb369',
     color: '#FEFEE3',
     fontSize: 30,
     textAlign: 'center',
