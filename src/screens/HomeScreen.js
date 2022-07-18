@@ -32,16 +32,38 @@ const HomeScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <View style={{flexDirection:'row',  borderWidth: 2, borderColor:'#2B6747'}}>
+      <View
+            style={{
+              flex: 4,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
                 <Searchbar
                 placeholder="Rechercher"
                 //onChangeText={onChangeSearch}
-                style={{ flexDirection: 'row-reverse', backgroundColor: '#8CB369', height: 50, width: '100%', color: 'white' }}
+                style={{ flexDirection: 'row-reverse', backgroundColor: '#8CB369', height: 50, width: '100%', color: 'white', borderLeftWidth: 2, borderRightWidth: 2 }}
                 theme={{
-            roundness: 0,
+            roundness: 5,
             colors: {primary: '#F4E285', underlineColor: 'transparent', placeholder: '#F4E285'},
           }}
                 //value={searchQuery}
             />
+            </View>
+            <View
+            style={{
+              flex: 0.5,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <TouchableOpacity style={{backgroundColor: '#8CB369', alignItems:'center', justifyContent:'center', width:'100%', height: 50}} onPress={() => navigation.navigate('list')}>
+              <MaterialCommunityIcons name="file-document-multiple-outline" size={26} />
+              <Text style={{fontStyle:'italic', fontWeight:'bold', fontSize: 16}}>liste</Text>
+
+              </TouchableOpacity>
+            </View>
+            </View>
+
       <View style={styles.containerSolde}>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <View

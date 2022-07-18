@@ -40,7 +40,7 @@ const AppNavigation = () => {
       <Drawer.Screen name="Login" options={{ headerShown: false, drawerLockMode: 'locked-closed' , swipeEnabled: false,  gestureEnabled: false }} component={StackNavigation} />
      
       <Drawer.Screen name="home" options={{ title: 'Accueil', headerTitleAlign: 'center', headerStyle: { backgroundColor: '#5b8e7d' }, headerTitleStyle: { color: 'white' }, headerTintColor: 'white' }} component={HomeScreen} />
-          <Drawer.Screen name="list" options={{ title: 'Liste', headerTitleAlign: 'center', headerStyle: { backgroundColor: '#5b8e7d' }, headerTitleStyle: { color: 'white' }, headerTintColor: 'white' }} component={ListBikeScreen} />
+          <Drawer.Screen name="list" options={{ title: 'Vélos disponibles', headerTitleAlign: 'center', headerStyle: { backgroundColor: '#5b8e7d' }, headerTitleStyle: { color: 'white' }, headerTintColor: 'white' }} component={ListBikeScreen} />
           <Drawer.Screen name="lend" options={{ title: 'Prêter', headerTitleAlign: 'center', headerStyle: { backgroundColor: '#5b8e7d' }, headerTitleStyle: { color: 'white' }, headerTintColor: 'white' }} component={LendBikeScreen} />
           <Drawer.Screen name="histo" options={{ title: 'Historique', headerTitleAlign: 'center', headerStyle: { backgroundColor: '#5b8e7d' }, headerTitleStyle: { color: 'white' }, headerTintColor: 'white' }} component={HistoScreen} />
       </Drawer.Navigator>

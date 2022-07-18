@@ -1,105 +1,73 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  Image,
 } from 'react-native';
 
 
 import UserContext from '../components/UserContext';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-
-const ListBikeScreen = ({navigation}) => {
+const ListBikeScreen = ({ navigation }) => {
   const UserContext_ = useContext(UserContext);
 
 
   return (
     <View style={styles.container}>
-<Text>LISTE DES VELO QUE TU PRETES</Text>
+      <ScrollView>
+        <Text style={{ fontWeight: 'bold', textAlign: 'center', marginTop: '10%' }} >Aucun vélo disponible autour de vous</Text>
+        <View style={{ marginVertical: 15, marginHorizontal: 10 }}>
+          <TouchableOpacity>
+          <View style={{ flexDirection: 'row', flex: 1 }}>
+            <View style={{ flex: 1 }}>
+              <Image
+                style={{
+                  height: 120,
+                  width: '100%',
+                  resizeMode: 'contain',
+                  borderRadius: 5
+                }}
+                source={require('../images/velo-ville.png')}
+              />
+            </View>
+            <View style={{ flexDirection: 'row', flex: 1 }}>
+              <View style={{ flex: 1, justifyContent: 'flex-start', marginHorizontal: 10 }}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000' }}>Vélo de ville</Text>
+                <Text style={{ fontSize: 14, color: '#000' }}>Pièce d’identité</Text>
+                <Text style={{ fontSize: 14, color: '#000' }}>Accessoires fournis</Text>
+                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-end' }}>
+                  <View style={{ flex: 1 }}>
+                    <TouchableOpacity style={styles.filter}><Text style={styles.txtfilter}>Ville</Text></TouchableOpacity>
+                  </View>
+                  <View style={{ flex: 1.8 }}>
+                    <TouchableOpacity style={styles.filter2}><Text style={styles.txtfilter}>Comme neuf</Text></TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          </TouchableOpacity>
+        </View>
+
+      </ScrollView>
+      <TouchableOpacity onPress={() => navigation.navigate('home')}>
+        <Text style={{ fontWeight: 'bold', textAlign: 'center', marginBottom: '7%', fontSize: 16, color: "#bc4b51" }} >Retour sur la carte</Text>
+      </TouchableOpacity>
     </View>
   );
 };
-
 export default ListBikeScreen;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0A0A0A',
+    backgroundColor: '#F4E285',
   },
-  containerSolde: {
-    flex: 0.75,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#2B6747',
-
-  },
-  boxTransac: {
-    flex: 2.5,
-    marginHorizontal: 15,
-  },
-  txtTitleCol: {
-    fontWeight: 'bold',
-    fontSize: 18,
-    color: '#EEF1F1',
-    textAlign: 'center',
-    marginVertical: 5,
-  },
-  line: {
-    flexDirection: 'row',
-    flex: 0.19,
-    marginBottom: 10,
-  },
-  lineLeft: {
-    flex: 1.85,
-    borderBottomWidth: 1,
-    borderBottomColor: '#adabab',
-    paddingBottom: 10,
-  },
-  lineRight: {
-    flex: 1.2,
-    borderBottomWidth: 1,
-    borderBottomColor: '#adabab',
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    paddingBottom: 10,
-  },
-  titleLine: {
-    color: '#EEF1F1',
-    textAlign: 'left',
-    marginHorizontal: 10,
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  txtSolde: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    textAlign: 'center',
-    color: 'white',
-  },
-  containerBtn: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginVertical: 5,
-  },
-  btn: {
-    alignItems: 'center',
-  },
-  dropDownStyle: {
-    width: '50%',
-    flex: 0.85,
-    borderColor: '#838383',
-    paddingHorizontal: 5,
-    backgroundColor: '#adabab',
-    borderRadius: 10,
-    color: '#838383',
-    height: 35,
-    textAlign: 'center',
-    justifyContent: 'center',
-    shadowColor: 'black',
+  filter: {
     shadowOffset: {
       width: 0,
       height: 5,
@@ -107,5 +75,30 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 6.84,
     elevation: 5,
+    backgroundColor: '#CC2A2A',
+    borderRadius: 5,
+    width: '100%',
+    height:25,
+    justifyContent:'center',
+  },
+  filter2: {
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 6.84,
+    elevation: 5,
+    backgroundColor: '#34B541',
+    borderRadius: 5,
+    marginHorizontal: 8,
+    width: '100%',
+    height:25,
+    justifyContent:'center'
+  },
+  txtfilter: {
+    color: '#fff',
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
 });
