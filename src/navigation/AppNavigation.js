@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Text} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
@@ -13,6 +14,7 @@ import LendBikeScreen from '../screens/LendBikeScreen';
 import ListBikeScreen from '../screens/ListBikeScreen';
 
 import CustomDrawer from '../components/CustomDrawer';
+import RNBootSplash from "react-native-bootsplash";
 
 
 const Stack = createNativeStackNavigator();
@@ -31,7 +33,7 @@ const StackNavigation = () => {
 
 const AppNavigation = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer onReady={() => RNBootSplash.hide()}>
       <Drawer.Navigator initialRouteName="Login" drawerContent={props => <CustomDrawer {...props} screenOptions={{ headerShown: false }} />}>
       <Drawer.Screen name="Login" options={{ headerShown: false, drawerLockMode: 'locked-closed' , swipeEnabled: false,  gestureEnabled: false }} component={StackNavigation} />
      
