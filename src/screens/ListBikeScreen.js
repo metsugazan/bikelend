@@ -21,7 +21,7 @@ const ListBikeScreen = ({ navigation }) => {
       <ScrollView>
         <Text style={{ fontWeight: 'bold', textAlign: 'center', marginTop: '10%' }} >Aucun vélo disponible autour de vous</Text>
         <View style={{ marginVertical: 15, marginHorizontal: 10 }}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('details')}>
           <View style={{ flexDirection: 'row', flex: 1 }}>
             <View style={{ flex: 1 }}>
               <Image

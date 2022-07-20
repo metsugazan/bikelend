@@ -56,7 +56,7 @@ const HomeScreen = ({navigation}) => {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <TouchableOpacity style={{backgroundColor: '#8CB369', alignItems:'center', justifyContent:'center', width:'100%', height: 50}} onPress={() => navigation.navigate('list')}>
+            <TouchableOpacity style={{backgroundColor: '#8CB369', alignItems:'center', justifyContent:'center', width:'100%', height: 50}} onPress={() => navigation.navigate('List')}>
               <MaterialCommunityIcons name="file-document-multiple-outline" size={26} />
               <Text style={{fontStyle:'italic', fontWeight:'bold', fontSize: 16}}>liste</Text>
 
@@ -100,7 +100,7 @@ const HomeScreen = ({navigation}) => {
                         latitude: 49.4927598,
                         longitude: 0.1134049,
                     }} >
-                        <Callout><Text>La Pizza de Manu</Text></Callout>
+                        <Callout><Text>Vélo La Manu</Text></Callout>
                     </Marker>
                 </MapView>
     </View>
