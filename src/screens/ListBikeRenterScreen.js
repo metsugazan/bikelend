@@ -12,21 +12,19 @@ import {
 import UserContext from '../components/UserContext';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const ListBikeScreen = ({ navigation }) => {
+const ListBikeRenterScreen = ({ navigation }) => {
   const UserContext_ = useContext(UserContext);
 
 
   return (
     <View style={styles.container}>
       <ScrollView>
-        <Text style={{ fontWeight: 'bold', textAlign: 'center', marginTop: '10%' }} >Aucun vélo disponible autour de vous</Text>
         <View style={{ marginVertical: 15, marginHorizontal: 10 }}>
-          <TouchableOpacity onPress={() => navigation.navigate('details')}>
           <View style={{ flexDirection: 'row', flex: 1 }}>
             <View style={{ flex: 1 }}>
               <Image
                 style={{
-                  height: 120,
+                  height: 130,
                   width: '100%',
                   resizeMode: 'contain',
                   borderRadius: 5
@@ -36,7 +34,8 @@ const ListBikeScreen = ({ navigation }) => {
             </View>
             <View style={{ flexDirection: 'row', flex: 1 }}>
               <View style={{ flex: 1, justifyContent: 'flex-start', marginHorizontal: 10 }}>
-                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000' }}>Vélo de ville</Text>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000' }}>Vélo de ville    <TouchableOpacity><Icon name='delete' size={24} style={{color: 'red', marginTop: 10}} /></TouchableOpacity> </Text>
+    
                 <Text style={{ fontSize: 14, color: '#000' }}>Pièce d’identité</Text>
                 <Text style={{ fontSize: 14, color: '#000' }}>Chèque de caution 200 €</Text>
                 <Text style={{ fontSize: 14, color: '#000' }}>Accessoires fournis</Text>
@@ -51,7 +50,6 @@ const ListBikeScreen = ({ navigation }) => {
               </View>
             </View>
           </View>
-          </TouchableOpacity>
         </View>
 
       </ScrollView>
@@ -61,7 +59,7 @@ const ListBikeScreen = ({ navigation }) => {
     </View>
   );
 };
-export default ListBikeScreen;
+export default ListBikeRenterScreen;
 
 const styles = StyleSheet.create({
   container: {

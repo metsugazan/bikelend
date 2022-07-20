@@ -147,7 +147,7 @@ const LoginScreen = ({navigation}) => {
             shadowRadius: 6.84,
             elevation: 5,
           }}
-          label="Entrez votre email"
+          placeholder="Entrez votre email"
           returnKeyType="next"
           autoCapitalize="none"
           value={email}
@@ -184,7 +184,7 @@ const LoginScreen = ({navigation}) => {
             elevation: 5,
           }}
           secureTextEntry={passwordVisible} //placeholder="Entrez votre mot de passe"
-          label="Entrez votre mot de passe"
+          placeholder="Entrez votre mot de passe"
           returnKeyType="done"
           autoCapitalize="none"
           value={password}

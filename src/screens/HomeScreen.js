@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import {
   View,
   Text,
@@ -14,8 +14,9 @@ import UserContext from '../components/UserContext';
 import auth from '@react-native-firebase/auth';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { Searchbar } from 'react-native-paper';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation }) => {
   const UserContext_ = useContext(UserContext);
 
   const onLogout = () => {
@@ -32,77 +33,54 @@ const HomeScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <View style={{flexDirection:'row',  borderWidth: 2, borderColor:'#2B6747'}}>
-      <View
-            style={{
-              flex: 4,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-                <Searchbar
-                placeholder="Rechercher"
-                //onChangeText={onChangeSearch}
-                style={{ flexDirection: 'row-reverse', backgroundColor: '#8CB369', height: 50, width: '100%', color: 'white', borderLeftWidth: 2, borderRightWidth: 2 }}
-                theme={{
-            roundness: 5,
-            colors: {primary: '#F4E285', underlineColor: 'transparent', placeholder: '#F4E285'},
-          }}
-                //value={searchQuery}
-            />
-            </View>
-            <View
-            style={{
-              flex: 0.5,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <TouchableOpacity style={{backgroundColor: '#8CB369', alignItems:'center', justifyContent:'center', width:'100%', height: 50}} onPress={() => navigation.navigate('List')}>
-              <MaterialCommunityIcons name="file-document-multiple-outline" size={26} />
-              <Text style={{fontStyle:'italic', fontWeight:'bold', fontSize: 16}}>liste</Text>
+      <View style={{ flexDirection: 'row', borderWidth: 2, borderColor: '#2B6747' }}>
+        <View
+          style={{
+            flex: 4,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Searchbar
+            placeholder="Rechercher"
+            //onChangeText={onChangeSearch}
+            style={{ flexDirection: 'row-reverse', backgroundColor: '#8CB369', height: 50, width: '100%', color: 'white', borderLeftWidth: 2, borderRightWidth: 2 }}
+            theme={{
+              roundness: 5,
+              colors: { primary: '#F4E285', underlineColor: 'transparent', placeholder: '#F4E285' },
+            }}
+          value={"Le Havre"}
+          />
+        </View>
+        <View
+          style={{
+            flex: 0.5,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <TouchableOpacity style={{ backgroundColor: '#8CB369', alignItems: 'center', justifyContent: 'center', width: '100%', height: 50 }} onPress={() => navigation.navigate('List')}>
+            <MaterialCommunityIcons name="file-document-multiple-outline" size={26} />
+            <Text style={{ fontStyle: 'italic', fontWeight: 'bold', fontSize: 16 }}>liste</Text>
 
-              </TouchableOpacity>
-            </View>
-            </View>
-
-      <View style={styles.containerSolde}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <View
-            style={{
-              flex: 1,
-              alignItems: 'center',
-              marginLeft: 10,
-              justifyContent: 'center',
-            }}><Text>Bonjour  !</Text>
-            </View>
-          <TouchableOpacity
-            onPress={() => {
-              onLogout();
-            }}>
-            <MaterialCommunityIcons
-              name="logout"
-              size={40}
-              style={{color: 'white', marginRight: 10}}
-            />
           </TouchableOpacity>
-
         </View>
       </View>
+
       <MapView
-                    style={{ width: '100%', height: '100%' }}
-                    initialRegion={{
-                        latitude: 49.4927598,
-                        longitude: 0.1134049,
-                        latitudeDelta: 0,
-                        longitudeDelta: 0.0131,
-                    }}
-                >
-                    <Marker coordinate={{
-                        latitude: 49.4927598,
-                        longitude: 0.1134049,
-                    }} >
-                        <Callout><Text>Vélo La Manu</Text></Callout>
-                    </Marker>
-                </MapView>
+        style={{ width: '100%', height: '100%' }}
+        initialRegion={{
+          latitude: 49.4927598,
+          longitude: 0.1134049,
+          latitudeDelta: 0,
+          longitudeDelta: 0.0131,
+        }}
+      >
+        <Marker coordinate={{
+          latitude: 49.4927598,
+          longitude: 0.1134049,
+        }} >
+          <Callout><Text>Vélo La Manu</Text></Callout>
+        </Marker>
+      </MapView>
     </View>
   );
 };

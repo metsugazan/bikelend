@@ -14,7 +14,7 @@ import HistoScreen from '../screens/HistoScreen';
 import LendBikeScreen from '../screens/LendBikeScreen';
 import ListBikeScreen from '../screens/ListBikeScreen';
 import DetailsBikeScreen from '../screens/DetailsBikeScreen';
-import ContactScreen from '../screens/ContactScreen';
+import ListBikeRenterScreen from '../screens/ListBikeRenterScreen';
 
 import CustomDrawer from '../components/CustomDrawer';
 import RNBootSplash from "react-native-bootsplash";
@@ -40,7 +40,6 @@ const LendNavigation = () => {
         <Stack.Navigator initialRouteName="list">
             <Stack.Screen name="list" options={{ title: 'Vélos disponibles', headerTitleAlign: 'center', headerStyle: { backgroundColor: '#5b8e7d' }, headerTitleStyle: { color: 'white' }, headerTintColor: 'white' }} component={ListBikeScreen} />
             <Stack.Screen name="details" options={{ title: 'Fiche vélo', headerTitleAlign: 'center', headerStyle: { backgroundColor: '#5b8e7d' }, headerTitleStyle: { color: 'white' }, headerTintColor: 'white' }} component={DetailsBikeScreen} />
-            <Stack.Screen name="contact" options={{ title: 'Contact', headerTitleAlign: 'center', headerStyle: { backgroundColor: '#5b8e7d' }, headerTitleStyle: { color: 'white' }, headerTintColor: 'white' }} component={ContactScreen} />
         </Stack.Navigator>
 
     )
@@ -55,8 +54,8 @@ const AppNavigation = () => {
 
                 <Drawer.Screen name="home" options={{ title: 'Accueil', headerTitleAlign: 'center', headerStyle: { backgroundColor: '#5b8e7d' }, headerTitleStyle: { color: 'white' }, headerTintColor: 'white' }} component={HomeScreen} />
                 <Drawer.Screen name="List" options={{ headerShown: false }} component={LendNavigation} />
+                <Drawer.Screen name="ListRenter" options={{ headerShown: false }} component={ListBikeRenterScreen} />
                 <Drawer.Screen name="lend" options={{ title: 'Prêter', headerTitleAlign: 'center', headerStyle: { backgroundColor: '#5b8e7d' }, headerTitleStyle: { color: 'white' }, headerTintColor: 'white' }} component={LendBikeScreen} />
-                <Drawer.Screen name="histo" options={{ title: 'Historique', headerTitleAlign: 'center', headerStyle: { backgroundColor: '#5b8e7d' }, headerTitleStyle: { color: 'white' }, headerTintColor: 'white' }} component={HistoScreen} />
             </Drawer.Navigator>
         </NavigationContainer>
     )
