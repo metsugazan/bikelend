@@ -32,9 +32,6 @@ const CustomDrawer = ({ navigation }) => {
                 <TouchableOpacity onPress={() => navigation.navigate('lend')} >
                     <Text style={styles.txt}>Prêter votre vélo</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('histo')} >
-                    <Text style={styles.txt}>Historique</Text>
-                </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => {
                         onLogout();

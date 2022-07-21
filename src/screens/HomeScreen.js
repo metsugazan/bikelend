@@ -36,11 +36,11 @@ const HomeScreen = ({ navigation }) => {
       <View style={{ flexDirection: 'row', borderWidth: 2, borderColor: '#2B6747' }}>
         <View
           style={{
-            flex: 4,
+            flex: 2,
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <Searchbar
+          {/*<Searchbar
             placeholder="Rechercher"
             //onChangeText={onChangeSearch}
             style={{ flexDirection: 'row-reverse', backgroundColor: '#8CB369', height: 50, width: '100%', color: 'white', borderLeftWidth: 2, borderRightWidth: 2 }}
@@ -49,7 +49,9 @@ const HomeScreen = ({ navigation }) => {
               colors: { primary: '#F4E285', underlineColor: 'transparent', placeholder: '#F4E285' },
             }}
           value={"Le Havre"}
-          />
+          />*/}
+          <Text style={{textAlign:'center', paddingTop: 5, fontSize: 15, fontWeight: 'bold', backgroundColor: '#8CB369', height: 50, width: '100%', color: 'white', borderLeftWidth: 2, borderRightWidth: 2 }}
+>Bonjour {UserContext_.user.displayName} ! {'\n'} Une petite virée à vélo?</Text>
         </View>
         <View
           style={{
@@ -67,9 +69,10 @@ const HomeScreen = ({ navigation }) => {
 
       <MapView
         style={{ width: '100%', height: '100%' }}
+        maxZoomLevel={6}
         initialRegion={{
-          latitude: 49.4927598,
-          longitude: 0.1134049,
+          latitude: 46.7236179,
+          longitude: 2.4817092,
           latitudeDelta: 0,
           longitudeDelta: 0.0131,
         }}
@@ -79,6 +82,15 @@ const HomeScreen = ({ navigation }) => {
           longitude: 0.1134049,
         }} >
           <Callout><Text>Vélo La Manu</Text></Callout>
+        </Marker>
+
+        <Marker coordinate={{
+          latitude: 46.7236179,
+          longitude: 2.4817092,
+          latitudeDelta: 0,
+          longitudeDelta: 0.0131,
+        }} >
+          <Callout><Text>Vélo V200</Text></Callout>
         </Marker>
       </MapView>
     </View>
