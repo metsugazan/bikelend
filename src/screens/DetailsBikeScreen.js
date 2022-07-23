@@ -75,10 +75,10 @@ const DetailsBikeScreen = ({ navigation }) => {
                             <Text style={styles.txtZone}>Chèque de caution 200 €</Text>
                         </View>
 
-                        <TouchableOpacity style={{alignItems:'center'}} onPress={() => Linking.openURL(`mailto:maurice.lapin@gmail.com?subject=Emprunt vélo via BikeLend&body=Bonjour,\n\n\n Cordialement, \n${UserContext_.user.displayName} \n\n Message envoyé grace à l'application BikeLend `) }><Text style={styles.btnLend}>Envoyer un mail au loueur</Text></TouchableOpacity>
+                        <TouchableOpacity style={{alignItems:'center'}} onPress={() => Linking.openURL(`mailto:maurice.lapin@gmail.com?subject=Emprunt vélo via BikeLend&body=Bonjour,\n\n\n Cordialement, \n${UserContext_.user.displayName} \n\n Message envoyé grace à l'application BikeLend `) }><Text style={styles.btnLend}>Envoyer un mail au prêteur</Text></TouchableOpacity>
 
                         <Text style={styles.titleZone}>Localisation</Text>
-                        <Text style={styles.txtZone}>La localisation exacte vous sera communiquée par le loueur</Text>
+                        <Text style={styles.txtZone}>La localisation exacte vous sera communiquée par le prêteur</Text>
 
                     </View>
                 </View>

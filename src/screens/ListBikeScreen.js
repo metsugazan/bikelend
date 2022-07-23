@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -11,9 +11,28 @@ import {
 
 import UserContext from '../components/UserContext';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import firestore from '@react-native-firebase/firestore';
+import ListComponent from "../components/ListComponent";
+
 
 const ListBikeScreen = ({ navigation }) => {
   const UserContext_ = useContext(UserContext);
+
+  const [bikes, setBikes] = useState([])
+
+  const fetchBikes = async () => {
+    firestore().collection("bike").get().then((querySnapshot) => {
+
+      querySnapshot.forEach(element => {
+        var bike = element.data();
+        setBikes(arr => [...arr, bike]);
+
+      });
+    })
+  }
+  useEffect(() => {
+    fetchBikes()
+  }, [])
 
 
   return (
@@ -21,37 +40,13 @@ const ListBikeScreen = ({ navigation }) => {
       <ScrollView>
         <Text style={{ fontWeight: 'bold', textAlign: 'center', marginTop: '10%' }} >Aucun vélo disponible autour de vous</Text>
         <View style={{ marginVertical: 15, marginHorizontal: 10 }}>
-          <TouchableOpacity onPress={() => navigation.navigate('details')}>
-          <View style={{ flexDirection: 'row', flex: 1 }}>
-            <View style={{ flex: 1 }}>
-              <Image
-                style={{
-                  height: 120,
-                  width: '100%',
-                  resizeMode: 'contain',
-                  borderRadius: 5
-                }}
-                source={require('../images/velo-ville.png')}
-              />
-            </View>
-            <View style={{ flexDirection: 'row', flex: 1 }}>
-              <View style={{ flex: 1, justifyContent: 'flex-start', marginHorizontal: 10 }}>
-                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000' }}>Vélo de ville</Text>
-                <Text style={{ fontSize: 14, color: '#000' }}>Pièce d’identité</Text>
-                <Text style={{ fontSize: 14, color: '#000' }}>Chèque de caution 200 €</Text>
-                <Text style={{ fontSize: 14, color: '#000' }}>Accessoires fournis</Text>
-                <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-end' }}>
-                  <View style={{ flex: 1 }}>
-                   <Text style={styles.txtfilter1}>Ville</Text>
-                  </View>
-                  <View style={{ flex: 1.8 }}>
-                   <Text style={styles.txtfilter2}>Comme neuf</Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-          </TouchableOpacity>
+          
+            {bikes.map((bike, index) => (
+              <TouchableOpacity onPress={() => navigation.navigate('details')}>
+              <ListComponent key={index} nom={bike.nom} caution={bike.caution} type={bike.type} etat={bike.etat} />
+              </TouchableOpacity>
+            ))}
+          
         </View>
 
       </ScrollView>
@@ -79,8 +74,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#CC2A2A',
     borderRadius: 25,
     width: '100%',
-    height:25,
-    justifyContent:'center',
+    height: 25,
+    justifyContent: 'center',
     color: '#fff',
     fontWeight: 'bold',
     textAlign: 'center',
@@ -98,8 +93,8 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     marginHorizontal: 8,
     width: '100%',
-    height:25,
-    justifyContent:'center',
+    height: 25,
+    justifyContent: 'center',
     color: '#fff',
     fontWeight: 'bold',
     textAlign: 'center',

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -8,28 +8,34 @@ import {
 } from 'react-native';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Entypo from 'react-native-vector-icons/Entypo';
-
+import firestore from '@react-native-firebase/firestore';
 import UserContext from '../components/UserContext';
-import auth from '@react-native-firebase/auth';
+import MarkersComponent from "../components/MarkersComponent";
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { Searchbar } from 'react-native-paper';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 
 const HomeScreen = ({ navigation }) => {
   const UserContext_ = useContext(UserContext);
 
-  const onLogout = () => {
-    auth()
-      .signOut()
-      .then(function () {
-        console.log('Sign-out successful.');
-      })
-      .catch(function (error) {
-        console.log('An error happened when signing out');
+  const [markers, setMarkers] = useState([])
+
+  const fetchMarkers = async () => {
+    firestore().collection("bike").get().then((querySnapshot) => {
+         
+      querySnapshot.forEach(element => {
+          var marker = element.data();
+          setMarkers(arr => [...arr , marker]);
       });
-    navigation.navigate('login');
-  };
+  })
+  }
+
+
+
+  useEffect(() => {
+    fetchMarkers()
+  }, [])
+
+
 
   return (
     <View style={styles.container}>
@@ -50,8 +56,8 @@ const HomeScreen = ({ navigation }) => {
             }}
           value={"Le Havre"}
           />*/}
-          <Text style={{textAlign:'center', paddingTop: 5, fontSize: 15, fontWeight: 'bold', backgroundColor: '#8CB369', height: 50, width: '100%', color: 'white', borderLeftWidth: 2, borderRightWidth: 2 }}
->Bonjour {UserContext_.user.displayName} ! {'\n'} Une petite virée à vélo?</Text>
+          <Text style={{ textAlign: 'center', paddingTop: 5, fontSize: 15, fontWeight: 'bold', backgroundColor: '#8CB369', height: 50, width: '100%', color: 'white', borderLeftWidth: 2, borderRightWidth: 2 }}
+          >Bonjour { /*UserContext_.user.displayName*/} ! {'\n'} Une petite virée à vélo?</Text>
         </View>
         <View
           style={{
@@ -69,6 +75,7 @@ const HomeScreen = ({ navigation }) => {
 
       <MapView
         style={{ width: '100%', height: '100%' }}
+        minZoomLevel={11}
         maxZoomLevel={6}
         initialRegion={{
           latitude: 46.7236179,
@@ -77,7 +84,27 @@ const HomeScreen = ({ navigation }) => {
           longitudeDelta: 0.0131,
         }}
       >
-        <Marker coordinate={{
+
+        {markers.map((marker, index) => (
+            <MarkersComponent key={index} latitude={marker.latitude} longitude={marker.longitude} nom={marker.nom} />
+        ))}
+
+        {/*
+          markers.map((marker, index) => (
+            
+              <View key={index}>
+                <Marker coordinate={{
+                  latitude:  marker.latitude ,
+                  longitude:  marker.longitude ,
+                }} >
+                  <Callout><Text>{marker.nom}</Text></Callout>
+                </Marker>
+                </View>
+
+          ))
+              */}
+
+        {/* <Marker coordinate={{
           latitude: 49.4927598,
           longitude: 0.1134049,
         }} >
@@ -91,7 +118,7 @@ const HomeScreen = ({ navigation }) => {
           longitudeDelta: 0.0131,
         }} >
           <Callout><Text>Vélo V200</Text></Callout>
-        </Marker>
+        </Marker>*/}
       </MapView>
     </View>
   );

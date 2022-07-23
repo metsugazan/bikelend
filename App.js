@@ -26,6 +26,12 @@ export default function App() {
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
 
+  const [latitude, setlatitude] = useState(0)
+  const [longitude, setlongitude] = useState(0)
+  const [markers_array, setMarkers_array] = useState([])
+  const [nom, setNom] = useState("")
+  const [data_, setdata_] = useState([])
+
   function onAuthStateChanged(user) {
     setUser(user);
     /*if (user != null){
@@ -53,7 +59,7 @@ export default function App() {
   return (
     <PaperProvider theme={theme}>
        <StatusBar backgroundColor="#5b8e7d" barStyle="light-content" />
-       <UserContext.Provider value={{user}}>
+       <UserContext.Provider value={{user, latitude, longitude, nom, markers_array}}>
       <AppNavigation />
       </UserContext.Provider>
         </PaperProvider>
